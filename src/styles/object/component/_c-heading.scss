@@ -19,27 +19,29 @@
 
 .c-heading__en {
   display: block;
-  font-family: $font-family-en;
-  font-size: rem(11);
-  font-weight: $fw-medium;
-  letter-spacing: 0.1em;
+  font-family: $font-family-display;
+  font-size: rem(32);
+  font-weight: $fw-extrabold;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: $color-accent;
+  color: $color-primary;
+  line-height: 1.1;
   margin-bottom: rem(8);
 
   @include smMin {
-    font-size: rem(12);
+    font-size: rem(56);
   }
 }
 
 .c-heading__ja {
   display: block;
-  font-size: rem(24);
-  font-weight: $fw-bold;
+  font-size: rem(12);
+  font-weight: $fw-medium;
   line-height: 1.4;
-  color: $color-primary;
+  color: $color-text-light;
+  letter-spacing: 0.08em;
 
   @include smMin {
-    font-size: rem(32);
+    font-size: rem(13);
   }
 }

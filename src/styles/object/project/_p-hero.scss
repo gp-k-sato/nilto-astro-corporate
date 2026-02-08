@@ -7,13 +7,13 @@
 .p-hero {
   background-color: $color-bg-dark;
   color: #fff;
-  padding: sm_vw(80) $content-padding-sp;
+  padding: sm_vw(100) $content-padding-sp;
   min-height: sm_vw(400);
   display: flex;
   align-items: center;
 
   @include smMin {
-    padding: rem(120) $content-padding-pc;
+    padding: rem(160) $content-padding-pc;
     min-height: rem(500);
   }
 }
@@ -43,7 +43,7 @@
 .p-hero__lead {
   font-size: rem(14);
   line-height: 1.8;
-  color: rgba(#fff, 0.8);
+  color: rgba(#fff, 0.6);
   max-width: rem(600);
 
   @include smMin {

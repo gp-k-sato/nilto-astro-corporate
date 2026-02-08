@@ -6,16 +6,33 @@
 
 .c-card {
   display: block;
+  position: relative;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   transition: box-shadow $transition-base, transform $transition-base;
   border: 1px solid $color-border-light;
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 2px;
+  //   height: 0;
+  //   background-color: $color-primary;
+  //   transition: height 0.4s $ease-out-cubic;
+  //   z-index: 1;
+  // }
 
   @include hover {
     opacity: 1;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
+
+    // &::before {
+    //   height: 100%;
+    // }
   }
 }
 
@@ -68,9 +85,9 @@
   padding: rem(2) rem(10);
   font-size: rem(11);
   font-weight: $fw-medium;
-  color: $color-accent;
-  background-color: rgba($color-accent, 0.08);
-  border-radius: 3px;
+  color: $color-primary;
+  background-color: rgba($color-primary, 0.06);
+  border-radius: 0;
 }
 
 .c-card__ttl {

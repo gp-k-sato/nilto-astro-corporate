@@ -11,7 +11,7 @@
 .c-table__row {
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid $color-border-light;
 
   @include smMin {
     flex-direction: row;

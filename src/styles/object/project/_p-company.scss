@@ -33,7 +33,7 @@
   color: $color-primary;
   margin-bottom: sm_vw(24);
   padding-bottom: sm_vw(12);
-  border-bottom: 2px solid $color-accent;
+  border-bottom: 1px solid $color-primary;
 
   @include smMin {
     font-size: rem(24);

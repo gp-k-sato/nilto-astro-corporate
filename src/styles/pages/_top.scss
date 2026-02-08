@@ -7,13 +7,32 @@
 .top-hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, $color-bg-dark 0%, $color-accent 100%);
+  background: linear-gradient(135deg, $color-bg-dark 0%, #222 50%, #333 100%);
+
+  // &::after {
+  //   content: "CREATE";
+  //   position: absolute;
+  //   bottom: -5vw;
+  //   right: -2vw;
+  //   font-family: $font-family-display;
+  //   font-size: 20vw;
+  //   font-weight: $fw-extrabold;
+  //   color: rgba(#fff, 0.03);
+  //   line-height: 1;
+  //   pointer-events: none;
+  //   text-transform: uppercase;
+  // }
 }
 
 .top-hero__bg {
   position: absolute;
   inset: 0;
-  opacity: 0.1;
-  background-image: radial-gradient(circle at 25% 50%, rgba(#fff, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 75% 50%, rgba(#fff, 0.1) 0%, transparent 50%);
+  opacity: 0.06;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(#fff, 0.1) 10px,
+    rgba(#fff, 0.1) 11px
+  );
 }

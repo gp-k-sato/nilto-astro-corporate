@@ -31,11 +31,12 @@
 }
 
 .l-header__logo {
-  font-family: $font-family-en;
+  font-family: $font-family-display;
   font-size: rem(20);
-  font-weight: $fw-bold;
+  font-weight: $fw-extrabold;
   color: $color-primary;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 
   @include smMin {
     font-size: rem(24);
@@ -66,14 +67,14 @@
     bottom: -4px;
     left: 0;
     width: 0;
-    height: 2px;
-    background-color: $color-accent;
+    height: 1px;
+    background-color: $color-primary;
     transition: width $transition-base;
   }
 
   @include hover {
     opacity: 1;
-    color: $color-accent;
+    color: $color-primary;
 
     &::after {
       width: 100%;
@@ -81,7 +82,7 @@
   }
 
   &.is-current {
-    color: $color-accent;
+    color: $color-primary;
 
     &::after {
       width: 100%;
@@ -157,6 +158,6 @@
   border-bottom: 1px solid $color-border-light;
 
   &.is-current {
-    color: $color-accent;
+    color: $color-primary;
   }
 }

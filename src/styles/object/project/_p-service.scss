@@ -16,9 +16,10 @@
 
 // Service Card
 .p-service-card {
+  position: relative;
   background-color: #fff;
   border: 1px solid $color-border-light;
-  border-radius: 8px;
+  border-radius: 0;
   padding: sm_vw(28);
   transition: box-shadow $transition-base, transform $transition-base;
 
@@ -26,10 +27,25 @@
     padding: rem(32);
   }
 
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $color-primary;
+    transition: width 0.4s $ease-out-cubic;
+  }
+
   @include hover {
     opacity: 1;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
+
+    &::after {
+      width: 100%;
+    }
   }
 }
 
@@ -40,9 +56,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba($color-accent, 0.08);
-  border-radius: 12px;
-  color: $color-accent;
+  background-color: rgba($color-primary, 0.06);
+  border-radius: 0;
+  color: $color-primary;
   font-size: rem(20);
 
   @include smMin {
@@ -72,7 +88,7 @@
 
 .p-service-card__catch {
   font-size: rem(12);
-  color: $color-accent;
+  color: $color-text-light;
   font-weight: $fw-medium;
   margin-bottom: sm_vw(12);
 

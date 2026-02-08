@@ -58,9 +58,9 @@
   padding: rem(2) rem(12);
   font-size: rem(12);
   font-weight: $fw-medium;
-  color: $color-accent;
-  background-color: rgba($color-accent, 0.08);
-  border-radius: 3px;
+  color: $color-primary;
+  background-color: rgba($color-primary, 0.06);
+  border-radius: 0;
 }
 
 .p-news-detail__ttl {
@@ -78,7 +78,7 @@
 
 .p-news-detail__thumb {
   margin-bottom: sm_vw(32);
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background-color: $color-bg-light;

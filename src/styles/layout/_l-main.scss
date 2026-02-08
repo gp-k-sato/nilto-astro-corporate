@@ -13,15 +13,29 @@
 }
 
 .l-main__section {
-  padding: sm_vw(60) 0;
+  padding: sm_vw(80) 0;
+  position: relative;
 
   @include smMin {
-    padding: rem(80) 0;
+    padding: rem(120) 0;
   }
+}
+
+.l-main__section + .l-main__section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background-color: $color-border;
 }
 
 .l-main__section--bg {
   background-color: $color-bg-light;
+  background-image: radial-gradient(circle, $color-border-light 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 .l-main__section-inner {

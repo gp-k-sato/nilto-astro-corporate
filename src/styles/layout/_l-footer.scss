@@ -5,12 +5,24 @@
 // ==========================================================================
 
 .l-footer {
+  position: relative;
   background-color: $color-bg-dark;
   color: #fff;
   padding: sm_vw(60) $content-padding-sp sm_vw(30);
 
   @include smMin {
     padding: rem(60) $content-padding-pc rem(30);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background-color: rgba(#fff, 0.3);
   }
 }
 
@@ -32,9 +44,11 @@
 }
 
 .l-footer__logo {
-  font-family: $font-family-en;
+  font-family: $font-family-display;
   font-size: rem(20);
-  font-weight: $fw-bold;
+  font-weight: $fw-extrabold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   margin-bottom: sm_vw(24);
 
   @include smMin {

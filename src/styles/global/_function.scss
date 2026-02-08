@@ -1,0 +1,17 @@
+@use "setting" as *;
+
+// ==========================================================================
+// Function
+// ==========================================================================
+
+@function rem($size) {
+  @return $size * 0.1 + rem;
+}
+
+@function sm_vw($size) {
+  @return calc(100 / $spDesignW * $size * 1vw);
+}
+
+@function pc_vw($size) {
+  @return calc(100 / $pcDesignW * $size * 1vw);
+}

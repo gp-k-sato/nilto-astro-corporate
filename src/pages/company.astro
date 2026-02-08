@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { fetchCompany, getBodyHtml } from "../lib/nilto.js";
+
+let company: any = null;
+
+try {
+  company = await fetchCompany();
+} catch (e) {
+  console.error("会社情報取得エラー:", e);
+}
+
+const philosophyHtml = company ? getBodyHtml(company.philosophy) : "";
+const historyHtml = company ? getBodyHtml(company.history) : "";
+
+const tableData = company
+  ? [
+      { label: "会社名", value: company.company_name },
+      { label: "代表者", value: company.representative },
+      { label: "設立", value: company.established },
+      { label: "所在地", value: company.address },
+      { label: "電話番号", value: company.phone },
+      { label: "事業内容", value: company.business_description },
+      { label: "従業員数", value: company.employees },
+      { label: "資本金", value: company.capital },
+    ].filter((item) => item.value)
+  : [];
+---
+
+<Layout title="会社概要 | NILTO Demo" description="株式会社NILTO Demoの会社概要ページです。">
+  <section class="l-main__section">
+    <div class="l-main__section-inner">
+      <SectionHeading ja="会社概要" en="Company" />
+    </div>
+  </section>
+
+  <div class="p-company">
+    {company ? (
+      <>
+        <div class="p-company__section">
+          <h3 class="p-company__section-ttl">会社情報</h3>
+          <dl class="c-table">
+            {tableData.map((item) => (
+              <div class="c-table__row">
+                <dt class="c-table__head">{item.label}</dt>
+                <dd class="c-table__data">{item.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {philosophyHtml && (
+          <div class="p-company__section">
+            <h3 class="p-company__section-ttl">企業理念</h3>
+            <div class="p-content-body" set:html={philosophyHtml} />
+          </div>
+        )}
+
+        {historyHtml && (
+          <div class="p-company__section">
+            <h3 class="p-company__section-ttl">沿革</h3>
+            <div class="p-content-body" set:html={historyHtml} />
+          </div>
+        )}
+      </>
+    ) : (
+      <p>会社情報を取得できませんでした。</p>
+    )}
+  </div>
+</Layout>

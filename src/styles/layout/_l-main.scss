@@ -1,0 +1,29 @@
+@use "../global" as *;
+
+// ==========================================================================
+// Main
+// ==========================================================================
+
+.l-main {
+  padding-top: 60px;
+
+  @include smMin {
+    padding-top: 80px;
+  }
+}
+
+.l-main__section {
+  padding: sm_vw(60) 0;
+
+  @include smMin {
+    padding: rem(80) 0;
+  }
+}
+
+.l-main__section--bg {
+  background-color: $color-bg-light;
+}
+
+.l-main__section-inner {
+  @include content-width;
+}

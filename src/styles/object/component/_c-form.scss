@@ -1,0 +1,92 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Form
+// ==========================================================================
+
+.c-form {
+  max-width: rem(700);
+  margin-inline: auto;
+}
+
+.c-form__group {
+  margin-bottom: sm_vw(24);
+
+  @include smMin {
+    margin-bottom: rem(28);
+    display: flex;
+    align-items: flex-start;
+    gap: rem(20);
+  }
+}
+
+.c-form__label {
+  display: block;
+  font-size: rem(14);
+  font-weight: $fw-bold;
+  color: $color-primary;
+  margin-bottom: sm_vw(8);
+
+  @include smMin {
+    min-width: rem(160);
+    padding-top: rem(12);
+    margin-bottom: 0;
+    font-size: rem(15);
+  }
+}
+
+.c-form__required {
+  display: inline-block;
+  font-size: rem(11);
+  color: #e74c3c;
+  margin-left: rem(8);
+  font-weight: $fw-medium;
+}
+
+.c-form__field {
+  flex: 1;
+}
+
+.c-form__input,
+.c-form__textarea,
+.c-form__select {
+  width: 100%;
+  padding: sm_vw(12) sm_vw(16);
+  font-size: rem(14);
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: border-color $transition-base;
+
+  @include smMin {
+    padding: rem(12) rem(16);
+    font-size: rem(15);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-accent;
+  }
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+}
+
+.c-form__textarea {
+  min-height: sm_vw(160);
+  resize: vertical;
+
+  @include smMin {
+    min-height: rem(180);
+  }
+}
+
+.c-form__submit {
+  text-align: center;
+  margin-top: sm_vw(40);
+
+  @include smMin {
+    margin-top: rem(48);
+  }
+}

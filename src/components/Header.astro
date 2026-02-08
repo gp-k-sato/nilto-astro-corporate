@@ -1,0 +1,63 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: "/", label: "トップ" },
+  { href: "/company/", label: "会社概要" },
+  { href: "/service/", label: "サービス" },
+  { href: "/news/", label: "ニュース" },
+  { href: "/contact/", label: "お問い合わせ" },
+];
+
+function isCurrent(href: string): boolean {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="l-header">
+  <div class="l-header__inner">
+    <a href="/" class="l-header__logo">NILTO Demo</a>
+
+    <nav class="l-header__nav">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={["l-header__nav-link", { "is-current": isCurrent(item.href) }]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <button class="l-header__hamburger" type="button" aria-label="メニューを開く">
+      <span class="l-header__hamburger-line"></span>
+      <span class="l-header__hamburger-line"></span>
+      <span class="l-header__hamburger-line"></span>
+    </button>
+  </div>
+
+  <nav class="l-header__sp-nav">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class:list={["l-header__sp-nav-link", { "is-current": isCurrent(item.href) }]}
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const hamburger = document.querySelector(".l-header__hamburger");
+  const spNav = document.querySelector(".l-header__sp-nav");
+
+  if (hamburger && spNav) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("is-open");
+      spNav.classList.toggle("is-open");
+      document.body.style.overflow = spNav.classList.contains("is-open") ? "hidden" : "";
+    });
+  }
+</script>

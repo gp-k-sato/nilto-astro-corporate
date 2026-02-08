@@ -1,0 +1,114 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Service
+// ==========================================================================
+
+.p-service__list {
+  display: grid;
+  gap: sm_vw(24);
+
+  @include smMin {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(28);
+  }
+}
+
+// Service Card
+.p-service-card {
+  background-color: #fff;
+  border: 1px solid $color-border-light;
+  border-radius: 8px;
+  padding: sm_vw(28);
+  transition: box-shadow $transition-base, transform $transition-base;
+
+  @include smMin {
+    padding: rem(32);
+  }
+
+  @include hover {
+    opacity: 1;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+.p-service-card__ico {
+  width: sm_vw(48);
+  height: sm_vw(48);
+  margin-bottom: sm_vw(16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color-accent, 0.08);
+  border-radius: 12px;
+  color: $color-accent;
+  font-size: rem(20);
+
+  @include smMin {
+    width: rem(56);
+    height: rem(56);
+    margin-bottom: rem(20);
+    font-size: rem(24);
+  }
+}
+
+.p-service-card__ico-img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.p-service-card__name {
+  font-size: rem(18);
+  font-weight: $fw-bold;
+  color: $color-primary;
+  margin-bottom: rem(4);
+
+  @include smMin {
+    font-size: rem(20);
+  }
+}
+
+.p-service-card__catch {
+  font-size: rem(12);
+  color: $color-accent;
+  font-weight: $fw-medium;
+  margin-bottom: sm_vw(12);
+
+  @include smMin {
+    font-size: rem(13);
+    margin-bottom: rem(16);
+  }
+}
+
+.p-service-card__txt {
+  font-size: rem(13);
+  color: $color-text-light;
+  line-height: 1.8;
+
+  @include smMin {
+    font-size: rem(14);
+  }
+}
+
+// Service Detail variant
+.p-service-card--detail {
+  .p-service-card__txt {
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
+  }
+}
+
+.p-service-card__detail {
+  margin-top: sm_vw(16);
+  padding-top: sm_vw(16);
+  border-top: 1px solid $color-border-light;
+
+  @include smMin {
+    margin-top: rem(20);
+    padding-top: rem(20);
+  }
+}

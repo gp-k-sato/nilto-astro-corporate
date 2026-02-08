@@ -1,0 +1,46 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Table (Definition List Style)
+// ==========================================================================
+
+.c-table {
+  width: 100%;
+}
+
+.c-table__row {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $color-border;
+
+  @include smMin {
+    flex-direction: row;
+  }
+}
+
+.c-table__head {
+  font-size: rem(14);
+  font-weight: $fw-bold;
+  color: $color-primary;
+  padding: sm_vw(16) 0 sm_vw(4);
+  min-width: 0;
+
+  @include smMin {
+    padding: rem(20) rem(24);
+    min-width: rem(200);
+    font-size: rem(15);
+  }
+}
+
+.c-table__data {
+  font-size: rem(14);
+  color: $color-text;
+  padding: sm_vw(4) 0 sm_vw(16);
+  line-height: 1.8;
+
+  @include smMin {
+    padding: rem(20) rem(24);
+    font-size: rem(15);
+    flex: 1;
+  }
+}

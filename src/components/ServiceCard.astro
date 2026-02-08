@@ -1,0 +1,31 @@
+---
+import { getImageUrl, getImageAlt, getBodyHtml } from "../lib/nilto.js";
+
+const { content, variant = "summary" } = Astro.props;
+const iconUrl = getImageUrl(content.icon);
+const iconAlt = getImageAlt(content.icon);
+const detailHtml = variant === "detail" ? getBodyHtml(content.detail) : "";
+
+const serviceIcons: Record<string, string> = {
+  "1": "&#128187;",
+  "2": "&#9881;",
+  "3": "&#127912;",
+};
+const fallbackIcon = serviceIcons[content.sort_order] || "&#9733;";
+---
+
+<div class:list={["p-service-card", { "p-service-card--detail": variant === "detail" }]}>
+  <div class="p-service-card__ico">
+    {iconUrl ? (
+      <img src={iconUrl} alt={iconAlt} class="p-service-card__ico-img" loading="lazy" />
+    ) : (
+      <span set:html={fallbackIcon} />
+    )}
+  </div>
+  <h3 class="p-service-card__name">{content.service_name}</h3>
+  {content.catchphrase && <p class="p-service-card__catch">{content.catchphrase}</p>}
+  {content.description && <p class="p-service-card__txt">{content.description}</p>}
+  {variant === "detail" && detailHtml && (
+    <div class="p-service-card__detail p-content-body" set:html={detailHtml} />
+  )}
+</div>

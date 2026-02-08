@@ -1,0 +1,28 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Contact
+// ==========================================================================
+
+.p-contact {
+  @include content-width;
+  padding-top: sm_vw(40);
+  padding-bottom: sm_vw(60);
+
+  @include smMin {
+    padding-top: rem(48);
+    padding-bottom: rem(80);
+  }
+}
+
+.p-contact__lead {
+  text-align: center;
+  font-size: rem(14);
+  color: $color-text-light;
+  margin-bottom: sm_vw(32);
+
+  @include smMin {
+    font-size: rem(15);
+    margin-bottom: rem(40);
+  }
+}

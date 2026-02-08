@@ -1,0 +1,57 @@
+@use "setting" as *;
+
+// ==========================================================================
+// Mixin
+// ==========================================================================
+
+@mixin smMin {
+  @media print, screen and (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin smMax {
+  @media screen and (max-width: ($sm - 1)) {
+    @content;
+  }
+}
+
+@mixin mdMin {
+  @media print, screen and (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin mdMax {
+  @media screen and (max-width: ($md - 1)) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @include smMin {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin content-width {
+  max-width: calc($content-width + $content-padding-pc * 2);
+  margin-inline: auto;
+  padding-inline: $content-padding-sp;
+
+  @include smMin {
+    padding-inline: $content-padding-pc;
+  }
+}
+
+@mixin content-width-narrow {
+  max-width: calc($content-width-narrow + $content-padding-pc * 2);
+  margin-inline: auto;
+  padding-inline: $content-padding-sp;
+
+  @include smMin {
+    padding-inline: $content-padding-pc;
+  }
+}

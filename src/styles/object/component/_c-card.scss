@@ -1,0 +1,100 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Card
+// ==========================================================================
+
+.c-card {
+  display: block;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow $transition-base, transform $transition-base;
+  border: 1px solid $color-border-light;
+
+  @include hover {
+    opacity: 1;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+.c-card__thumb {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background-color: $color-bg-light;
+}
+
+.c-card__thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-card__thumb-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: $color-text-muted;
+  font-size: rem(13);
+}
+
+.c-card__body {
+  padding: sm_vw(20);
+
+  @include smMin {
+    padding: rem(20) rem(24);
+  }
+}
+
+.c-card__meta {
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+  margin-bottom: rem(8);
+}
+
+.c-card__date {
+  font-size: rem(12);
+  color: $color-text-muted;
+  font-family: $font-family-en;
+}
+
+.c-card__badge {
+  display: inline-block;
+  padding: rem(2) rem(10);
+  font-size: rem(11);
+  font-weight: $fw-medium;
+  color: $color-accent;
+  background-color: rgba($color-accent, 0.08);
+  border-radius: 3px;
+}
+
+.c-card__ttl {
+  font-size: rem(15);
+  font-weight: $fw-bold;
+  line-height: 1.6;
+  color: $color-text;
+  margin-bottom: rem(8);
+
+  @include smMin {
+    font-size: rem(16);
+  }
+}
+
+.c-card__txt {
+  font-size: rem(13);
+  color: $color-text-light;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @include smMin {
+    font-size: rem(14);
+  }
+}

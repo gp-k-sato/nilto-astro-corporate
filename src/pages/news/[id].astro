@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { fetchNews, formatDate, getImageUrl, getImageAlt, getBodyHtml } from "../../lib/nilto.js";
+
+export async function getStaticPaths() {
+  let news: any[] = [];
+  try {
+    news = await fetchNews();
+  } catch (e) {
+    console.error("ニュース取得エラー:", e);
+    return [];
+  }
+
+  return news.map((content: any) => ({
+    params: { id: content._id.toString() },
+    props: { content },
+  }));
+}
+
+const { content } = Astro.props;
+const bodyHtml = getBodyHtml(content.body);
+const thumbUrl = getImageUrl(content.thumbnail);
+const thumbAlt = getImageAlt(content.thumbnail);
+---
+
+<Layout
+  title={`${content.title} | ニュース | NILTO Demo`}
+  description={content.title || ""}
+  ogType="article"
+>
+  <div class="p-news-detail">
+    <div class="p-news-detail__meta">
+      <time class="p-news-detail__date">{formatDate(content.publish_date)}</time>
+      {content.category && (
+        <span class="p-news-detail__category">{content.category}</span>
+      )}
+    </div>
+
+    <h1 class="p-news-detail__ttl">{content.title}</h1>
+
+    {thumbUrl && (
+      <div class="p-news-detail__thumb">
+        <img src={thumbUrl} alt={thumbAlt} class="p-news-detail__thumb-img" />
+      </div>
+    )}
+
+    {bodyHtml && (
+      <div class="p-content-body" set:html={bodyHtml} />
+    )}
+
+    <div class="p-news-detail__back">
+      <a href="/news/" class="c-btn c-btn--outline">ニュース一覧に戻る<span class="c-btn__arrow"></span></a>
+    </div>
+  </div>
+</Layout>

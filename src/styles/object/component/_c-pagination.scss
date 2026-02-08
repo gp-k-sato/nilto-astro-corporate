@@ -1,0 +1,44 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Pagination (Future Use)
+// ==========================================================================
+
+.c-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: rem(8);
+  margin-top: sm_vw(40);
+
+  @include smMin {
+    margin-top: rem(48);
+  }
+}
+
+.c-pagination__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: rem(40);
+  height: rem(40);
+  padding: 0 rem(8);
+  font-size: rem(14);
+  font-family: $font-family-en;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  transition: background-color $transition-base, color $transition-base;
+
+  @include hover {
+    opacity: 1;
+    background-color: $color-accent;
+    color: #fff;
+    border-color: $color-accent;
+  }
+}
+
+.c-pagination__item.is-current {
+  background-color: $color-accent;
+  color: #fff;
+  border-color: $color-accent;
+}

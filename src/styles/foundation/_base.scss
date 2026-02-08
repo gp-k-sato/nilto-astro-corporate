@@ -1,0 +1,37 @@
+@use "../global" as *;
+
+// ==========================================================================
+// Base
+// ==========================================================================
+
+body {
+  font-family: $font-family;
+  font-size: rem(14);
+  font-weight: $fw-regular;
+  line-height: 1.8;
+  color: $color-text;
+  background-color: $color-bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include smMin {
+    font-size: rem(16);
+  }
+}
+
+a {
+  transition: opacity $transition-base;
+
+  @include hover {
+    opacity: 0.7;
+  }
+}
+
+img {
+  height: auto;
+}
+
+::selection {
+  background-color: $color-accent;
+  color: #fff;
+}

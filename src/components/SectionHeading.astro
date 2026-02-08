@@ -1,0 +1,8 @@
+---
+const { ja, en, align = "center" } = Astro.props;
+---
+
+<div class:list={["c-heading", { "c-heading--left": align === "left" }]}>
+  <span class="c-heading__en">{en}</span>
+  <h2 class="c-heading__ja">{ja}</h2>
+</div>

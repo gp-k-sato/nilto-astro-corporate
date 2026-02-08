@@ -1,0 +1,27 @@
+---
+const navItems = [
+  { href: "/", label: "トップ" },
+  { href: "/company/", label: "会社概要" },
+  { href: "/service/", label: "サービス" },
+  { href: "/news/", label: "ニュース" },
+  { href: "/contact/", label: "お問い合わせ" },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="l-footer">
+  <div class="l-footer__inner">
+    <div class="l-footer__content">
+      <div class="l-footer__logo">NILTO Demo</div>
+      <nav class="l-footer__nav">
+        {navItems.map((item) => (
+          <a href={item.href} class="l-footer__nav-link">{item.label}</a>
+        ))}
+      </nav>
+    </div>
+    <p class="l-footer__copyright">
+      &copy; {year} NILTO Demo. All rights reserved.
+    </p>
+  </div>
+</footer>

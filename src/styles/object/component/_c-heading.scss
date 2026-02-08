@@ -1,0 +1,45 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Heading
+// ==========================================================================
+
+.c-heading {
+  text-align: center;
+  margin-bottom: sm_vw(40);
+
+  @include smMin {
+    margin-bottom: rem(48);
+  }
+}
+
+.c-heading--left {
+  text-align: left;
+}
+
+.c-heading__en {
+  display: block;
+  font-family: $font-family-en;
+  font-size: rem(11);
+  font-weight: $fw-medium;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-accent;
+  margin-bottom: rem(8);
+
+  @include smMin {
+    font-size: rem(12);
+  }
+}
+
+.c-heading__ja {
+  display: block;
+  font-size: rem(24);
+  font-weight: $fw-bold;
+  line-height: 1.4;
+  color: $color-primary;
+
+  @include smMin {
+    font-size: rem(32);
+  }
+}

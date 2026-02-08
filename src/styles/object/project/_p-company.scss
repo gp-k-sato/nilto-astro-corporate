@@ -1,0 +1,92 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Company
+// ==========================================================================
+
+.p-company {
+  @include content-width;
+  padding-top: sm_vw(40);
+  padding-bottom: sm_vw(60);
+
+  @include smMin {
+    padding-top: rem(48);
+    padding-bottom: rem(80);
+  }
+}
+
+.p-company__section {
+  margin-bottom: sm_vw(48);
+
+  @include smMin {
+    margin-bottom: rem(64);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.p-company__section-ttl {
+  font-size: rem(20);
+  font-weight: $fw-bold;
+  color: $color-primary;
+  margin-bottom: sm_vw(24);
+  padding-bottom: sm_vw(12);
+  border-bottom: 2px solid $color-accent;
+
+  @include smMin {
+    font-size: rem(24);
+    margin-bottom: rem(28);
+    padding-bottom: rem(12);
+  }
+}
+
+// Top page summary
+.p-company-summary {
+  background-color: $color-bg-light;
+
+  @include smMin {
+    display: flex;
+    align-items: center;
+    gap: rem(48);
+  }
+}
+
+.p-company-summary__body {
+  flex: 1;
+}
+
+.p-company-summary__item {
+  display: flex;
+  gap: rem(16);
+  font-size: rem(14);
+  margin-bottom: rem(8);
+
+  @include smMin {
+    font-size: rem(15);
+    margin-bottom: rem(12);
+  }
+}
+
+.p-company-summary__label {
+  font-weight: $fw-bold;
+  color: $color-primary;
+  min-width: rem(80);
+
+  @include smMin {
+    min-width: rem(100);
+  }
+}
+
+.p-company-summary__value {
+  color: $color-text;
+}
+
+.p-company-summary__more {
+  margin-top: sm_vw(24);
+
+  @include smMin {
+    margin-top: rem(28);
+  }
+}

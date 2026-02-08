@@ -1,0 +1,70 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Button
+// ==========================================================================
+
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(8);
+  min-width: sm_vw(200);
+  padding: sm_vw(14) sm_vw(32);
+  font-size: rem(14);
+  font-weight: $fw-medium;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  transition: background-color $transition-base, color $transition-base, border-color $transition-base;
+
+  @include smMin {
+    min-width: rem(200);
+    padding: rem(14) rem(32);
+  }
+}
+
+.c-btn--primary {
+  background-color: $color-accent;
+  color: #fff;
+  border: 1px solid $color-accent;
+
+  @include hover {
+    opacity: 1;
+    background-color: $color-accent-light;
+    border-color: $color-accent-light;
+  }
+}
+
+.c-btn--outline {
+  background-color: transparent;
+  color: $color-accent;
+  border: 1px solid $color-accent;
+
+  @include hover {
+    opacity: 1;
+    background-color: $color-accent;
+    color: #fff;
+  }
+}
+
+.c-btn--large {
+  min-width: sm_vw(260);
+  padding: sm_vw(18) sm_vw(40);
+  font-size: rem(15);
+
+  @include smMin {
+    min-width: rem(280);
+    padding: rem(18) rem(48);
+    font-size: rem(16);
+  }
+}
+
+.c-btn__arrow {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform $transition-base;
+}

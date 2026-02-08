@@ -1,0 +1,24 @@
+---
+import { formatDate, getImageUrl, getImageAlt } from "../lib/nilto.js";
+
+const { content } = Astro.props;
+const thumbUrl = getImageUrl(content.thumbnail);
+const thumbAlt = getImageAlt(content.thumbnail);
+---
+
+<a href={`/news/${content._id}/`} class="c-card">
+  <div class="c-card__thumb">
+    {thumbUrl ? (
+      <img src={thumbUrl} alt={thumbAlt} class="c-card__thumb-img" loading="lazy" />
+    ) : (
+      <div class="c-card__thumb-fallback">No Image</div>
+    )}
+  </div>
+  <div class="c-card__body">
+    <div class="c-card__meta">
+      <time class="c-card__date">{formatDate(content.publish_date)}</time>
+      {content.category && <span class="c-card__badge">{content.category}</span>}
+    </div>
+    <h3 class="c-card__ttl">{content.title}</h3>
+  </div>
+</a>

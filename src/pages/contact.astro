@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+---
+
+<Layout title="お問い合わせ | NILTO Demo" description="株式会社NILTO Demoへのお問い合わせはこちら。">
+  <section class="l-main__section">
+    <div class="l-main__section-inner">
+      <SectionHeading ja="お問い合わせ" en="Contact" />
+    </div>
+  </section>
+
+  <div class="p-contact">
+    <p class="p-contact__lead">
+      お気軽にお問い合わせください。<br />
+      内容を確認の上、担当者よりご連絡いたします。
+    </p>
+
+    <form class="c-form" action="#" method="post">
+      <div class="c-form__group">
+        <label class="c-form__label" for="name">
+          お名前<span class="c-form__required">必須</span>
+        </label>
+        <div class="c-form__field">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="c-form__input"
+            placeholder="山田 太郎"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="c-form__group">
+        <label class="c-form__label" for="email">
+          メールアドレス<span class="c-form__required">必須</span>
+        </label>
+        <div class="c-form__field">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="c-form__input"
+            placeholder="example@email.com"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="c-form__group">
+        <label class="c-form__label" for="phone">
+          電話番号
+        </label>
+        <div class="c-form__field">
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="c-form__input"
+            placeholder="03-1234-5678"
+          />
+        </div>
+      </div>
+
+      <div class="c-form__group">
+        <label class="c-form__label" for="message">
+          お問い合わせ内容<span class="c-form__required">必須</span>
+        </label>
+        <div class="c-form__field">
+          <textarea
+            id="message"
+            name="message"
+            class="c-form__textarea"
+            placeholder="お問い合わせ内容をご記入ください"
+            required
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="c-form__submit">
+        <button type="submit" class="c-btn c-btn--primary c-btn--large">
+          送信する<span class="c-btn__arrow"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</Layout>

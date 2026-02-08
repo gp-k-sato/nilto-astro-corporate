@@ -1,11 +1,94 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import NewsCard from "../components/NewsCard.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import { fetchNews, fetchServices, fetchCompany } from "../lib/nilto.js";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+let news: any[] = [];
+let services: any[] = [];
+let company: any = null;
+
+try {
+  [news, services, company] = await Promise.all([
+    fetchNews({ limit: 3 }),
+    fetchServices(),
+    fetchCompany(),
+  ]);
+} catch (e) {
+  console.error("データ取得エラー:", e);
+}
 ---
 
 <Layout>
-	<Welcome />
+  <section class="p-hero top-hero">
+    <div class="top-hero__bg"></div>
+    <div class="p-hero__inner">
+      <h1 class="p-hero__catch">テクノロジーで、<br />未来をデザインする。</h1>
+      <p class="p-hero__lead">
+        私たちは最新のテクノロジーとクリエイティブの力で、<br class="u-pc-only" />
+        お客様のビジネスの成長と変革を支援します。
+      </p>
+    </div>
+  </section>
+
+  <section class="l-main__section">
+    <div class="l-main__section-inner">
+      <SectionHeading ja="ニュース" en="News" />
+      {news && news.length > 0 ? (
+        <div class="p-news__list">
+          {news.map((item: any) => (
+            <NewsCard content={item} />
+          ))}
+        </div>
+        <div class="p-news__more">
+          <a href="/news/" class="c-btn c-btn--outline">一覧を見る<span class="c-btn__arrow"></span></a>
+        </div>
+      ) : (
+        <p>ニュースはまだありません。</p>
+      )}
+    </div>
+  </section>
+
+  <section class="l-main__section l-main__section--bg">
+    <div class="l-main__section-inner">
+      <SectionHeading ja="サービス" en="Service" />
+      {services && services.length > 0 ? (
+        <div class="p-service__list">
+          {services.map((item: any) => (
+            <ServiceCard content={item} />
+          ))}
+        </div>
+      ) : (
+        <p>サービス情報はまだありません。</p>
+      )}
+    </div>
+  </section>
+
+  {company && (
+    <section class="l-main__section">
+      <div class="l-main__section-inner">
+        <SectionHeading ja="会社概要" en="Company" />
+        <div class="p-company-summary">
+          <div class="p-company-summary__body">
+            <div class="p-company-summary__item">
+              <span class="p-company-summary__label">会社名</span>
+              <span class="p-company-summary__value">{company.company_name}</span>
+            </div>
+            <div class="p-company-summary__item">
+              <span class="p-company-summary__label">代表者</span>
+              <span class="p-company-summary__value">{company.representative}</span>
+            </div>
+            <div class="p-company-summary__item">
+              <span class="p-company-summary__label">所在地</span>
+              <span class="p-company-summary__value">{company.address}</span>
+            </div>
+            <div class="p-company-summary__more">
+              <a href="/company/" class="c-btn c-btn--primary">詳しく見る<span class="c-btn__arrow"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>

@@ -1,0 +1,118 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Content Body (for set:html flexible text)
+// ==========================================================================
+
+.p-content-body {
+  font-size: rem(14);
+  line-height: 1.9;
+  color: $color-text;
+
+  @include smMin {
+    font-size: rem(16);
+  }
+
+  h2 {
+    font-size: rem(20);
+    font-weight: $fw-bold;
+    color: $color-primary;
+    margin-top: sm_vw(32);
+    margin-bottom: sm_vw(16);
+    padding-bottom: sm_vw(8);
+    border-bottom: 1px solid $color-border;
+
+    @include smMin {
+      font-size: rem(24);
+      margin-top: rem(40);
+      margin-bottom: rem(20);
+      padding-bottom: rem(8);
+    }
+  }
+
+  h3 {
+    font-size: rem(17);
+    font-weight: $fw-bold;
+    color: $color-primary;
+    margin-top: sm_vw(24);
+    margin-bottom: sm_vw(12);
+
+    @include smMin {
+      font-size: rem(20);
+      margin-top: rem(32);
+      margin-bottom: rem(16);
+    }
+  }
+
+  p {
+    margin-bottom: rem(16);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul,
+  ol {
+    margin-bottom: rem(16);
+    padding-left: rem(24);
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  li {
+    margin-bottom: rem(4);
+  }
+
+  a {
+    color: $color-accent;
+    text-decoration: underline;
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+
+  blockquote {
+    margin: rem(16) 0;
+    padding: rem(16) rem(20);
+    border-left: 3px solid $color-accent;
+    background-color: $color-bg-light;
+    color: $color-text-light;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: rem(16);
+    border: 1px solid $color-border;
+
+    th,
+    td {
+      padding: rem(10) rem(16);
+      border: 1px solid $color-border;
+      text-align: left;
+    }
+
+    th {
+      background-color: $color-bg-light;
+      font-weight: $fw-bold;
+    }
+  }
+
+  img {
+    border-radius: 4px;
+    margin: rem(16) 0;
+  }
+
+  hr {
+    margin: rem(24) 0;
+    border: none;
+    border-top: 1px solid $color-border;
+  }
+}

@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude Code
+.claude/
+
+# MCP config (contains API tokens)
+.mcp.json

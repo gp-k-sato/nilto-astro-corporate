@@ -1,0 +1,79 @@
+@use "../global" as *;
+
+// ==========================================================================
+// Footer
+// ==========================================================================
+
+.l-footer {
+  background-color: $color-bg-dark;
+  color: #fff;
+  padding: sm_vw(60) $content-padding-sp sm_vw(30);
+
+  @include smMin {
+    padding: rem(60) $content-padding-pc rem(30);
+  }
+}
+
+.l-footer__inner {
+  max-width: calc($content-width + $content-padding-pc * 2);
+  margin-inline: auto;
+
+  @include smMin {
+    padding-inline: $content-padding-pc;
+  }
+}
+
+.l-footer__content {
+  @include smMin {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.l-footer__logo {
+  font-family: $font-family-en;
+  font-size: rem(20);
+  font-weight: $fw-bold;
+  margin-bottom: sm_vw(24);
+
+  @include smMin {
+    font-size: rem(24);
+    margin-bottom: 0;
+  }
+}
+
+.l-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: sm_vw(16) sm_vw(32);
+
+  @include smMin {
+    gap: rem(16) rem(40);
+  }
+}
+
+.l-footer__nav-link {
+  font-size: rem(13);
+  color: rgba(#fff, 0.7);
+  transition: color $transition-base;
+
+  @include hover {
+    opacity: 1;
+    color: #fff;
+  }
+}
+
+.l-footer__copyright {
+  margin-top: sm_vw(40);
+  padding-top: sm_vw(24);
+  border-top: 1px solid rgba(#fff, 0.15);
+  font-size: rem(12);
+  color: rgba(#fff, 0.5);
+  text-align: center;
+
+  @include smMin {
+    margin-top: rem(40);
+    padding-top: rem(24);
+  }
+}

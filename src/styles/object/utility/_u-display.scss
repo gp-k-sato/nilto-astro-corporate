@@ -1,0 +1,35 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Display Utility
+// ==========================================================================
+
+.u-sp-only {
+  @include smMin {
+    display: none !important;
+  }
+}
+
+.u-pc-only {
+  display: none !important;
+
+  @include smMin {
+    display: block !important;
+  }
+}
+
+.u-pc-only--inline {
+  display: none !important;
+
+  @include smMin {
+    display: inline !important;
+  }
+}
+
+.u-pc-only--flex {
+  display: none !important;
+
+  @include smMin {
+    display: flex !important;
+  }
+}

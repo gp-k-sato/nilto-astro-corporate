@@ -1,46 +1,110 @@
-# Astro Starter Kit: Basics
+# NILTO + Astro コーポレートデモサイト
+
+NILTO（ヘッドレスCMS）と Astro を組み合わせたコーポレートサイトのデモプロジェクトです。
+
+## 技術スタック
+
+- **フレームワーク:** [Astro](https://astro.build/) 5.x（SSG）
+- **スタイル:** Sass（Dart Sass）/ FLOCSS設計
+- **CMS:** [NILTO](https://nilto.com/)（ヘッドレスCMS）
+- **フォント:** Google Fonts（Fustat + Noto Sans JP）
+
+## セットアップ
+
+### 1. 依存パッケージのインストール
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### 2. 環境変数の設定
 
-## 🚀 Project Structure
+`.env.example` をコピーして `.env` を作成し、NILTO の API キーを設定します。
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+cp .env.example .env
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+```
+NILTO_API_KEY=your_api_key_here
+```
 
-## 🧞 Commands
+### 3. NILTO スペースの準備
 
-All commands are run from the root of the project, from a terminal:
+以下のコンテンツモデルを NILTO 上に作成してください。
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| モデル | 用途 |
+|--------|------|
+| `news` | ニュース・お知らせ |
+| `company` | 会社情報 |
+| `service` | サービス情報 |
 
-## 👀 Want to learn more?
+## 開発コマンド
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+プロジェクトルートから実行します。
+
+| コマンド | 内容 |
+|----------|------|
+| `npm run dev` | 開発サーバーを起動（`localhost:4321`） |
+| `npm run build` | 本番用ビルド（`./dist/`） |
+| `npm run preview` | ビルド結果をローカルでプレビュー |
+
+## プロジェクト構成
+
+```
+src/
+├── assets/                  # 画像などの静的アセット
+├── components/              # Astro コンポーネント
+│   ├── Header.astro         #   ヘッダー・ナビゲーション
+│   ├── Footer.astro         #   フッター
+│   ├── SectionHeading.astro #   セクション見出し
+│   ├── NewsCard.astro       #   ニュースカード
+│   └── ServiceCard.astro    #   サービスカード
+├── layouts/
+│   └── Layout.astro         # 共通レイアウト
+├── lib/
+│   └── nilto.js             # NILTO API クライアント
+├── pages/                   # ページ（ルーティング）
+│   ├── index.astro          #   トップページ
+│   ├── company.astro        #   会社概要
+│   ├── service.astro        #   サービス一覧
+│   ├── contact.astro        #   お問い合わせ
+│   └── news/
+│       ├── index.astro      #   ニュース一覧
+│       └── [id].astro       #   ニュース詳細
+└── styles/                  # SCSS（FLOCSS構成）
+    ├── style.scss           #   エントリーポイント
+    ├── foundation/          #   リセット・ベース
+    ├── global/              #   変数・Mixin・関数
+    ├── layout/              #   ヘッダー・フッター・メイン
+    ├── object/
+    │   ├── component/       #   汎用コンポーネント
+    │   ├── project/         #   ページ固有スタイル
+    │   └── utility/         #   ユーティリティ
+    └── pages/               #   ページ単位スタイル
+```
+
+## ページ一覧
+
+| パス | ページ | データソース |
+|------|--------|-------------|
+| `/` | トップページ | news, company, service |
+| `/company/` | 会社概要 | company |
+| `/service/` | サービス一覧 | service |
+| `/news/` | ニュース一覧 | news |
+| `/news/[id]/` | ニュース詳細 | news（個別） |
+| `/contact/` | お問い合わせ | — |
+
+## NILTO コンテンツモデル
+
+### news（ニュース）
+
+ニュース・お知らせの管理。一覧・詳細ページで使用。
+
+### company（会社情報）
+
+会社概要（社名、所在地、設立日、理念、沿革など）の管理。1件のみ。
+
+### service（サービス）
+
+提供サービスの管理。トップページとサービス一覧ページで使用。

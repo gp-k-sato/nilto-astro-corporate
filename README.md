@@ -38,6 +38,7 @@ NILTO_API_KEY=your_api_key_here
 | `news` | ニュース・お知らせ |
 | `company` | 会社情報 |
 | `service` | サービス情報 |
+| `service_page` | サービス一覧ページ情報（リード文など） |
 
 ## 開発コマンド
 
@@ -59,7 +60,8 @@ src/
 │   ├── Footer.astro         #   フッター
 │   ├── SectionHeading.astro #   セクション見出し
 │   ├── NewsCard.astro       #   ニュースカード
-│   └── ServiceCard.astro    #   サービスカード
+│   ├── ServiceCard.astro    #   サービスカード
+│   └── Breadcrumb.astro     #   パンくずリスト
 ├── layouts/
 │   └── Layout.astro         # 共通レイアウト
 ├── lib/
@@ -67,8 +69,10 @@ src/
 ├── pages/                   # ページ（ルーティング）
 │   ├── index.astro          #   トップページ
 │   ├── company.astro        #   会社概要
-│   ├── service.astro        #   サービス一覧
 │   ├── contact.astro        #   お問い合わせ
+│   ├── service/
+│   │   ├── index.astro      #   サービス一覧
+│   │   └── [slug].astro     #   サービス詳細
 │   └── news/
 │       ├── index.astro      #   ニュース一覧
 │       └── [id].astro       #   ニュース詳細
@@ -90,7 +94,8 @@ src/
 |------|--------|-------------|
 | `/` | トップページ | news, company, service |
 | `/company/` | 会社概要 | company |
-| `/service/` | サービス一覧 | service |
+| `/service/` | サービス一覧 | service, service_page |
+| `/service/[slug]/` | サービス詳細 | service |
 | `/news/` | ニュース一覧 | news |
 | `/news/[id]/` | ニュース詳細 | news（個別） |
 | `/contact/` | お問い合わせ | — |
@@ -107,4 +112,8 @@ src/
 
 ### service（サービス）
 
-提供サービスの管理。トップページとサービス一覧ページで使用。
+提供サービスの管理。トップページ・サービス一覧・サービス詳細ページで使用。
+
+### service_page（サービスページ情報）
+
+サービス一覧ページのリード文などの管理。1件のみ。

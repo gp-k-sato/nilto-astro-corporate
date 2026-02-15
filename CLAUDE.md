@@ -14,7 +14,7 @@ src/
 ├── components/       # Astro コンポーネント
 ├── layouts/          # 共通レイアウト（Layout.astro）
 ├── lib/              # API クライアント（nilto.js）
-├── pages/            # ページ・ルーティング
+├── pages/            # ページ・ルーティング（news/, service/ にサブディレクトリ）
 └── styles/           # SCSS（FLOCSS: foundation / global / layout / object / pages）
 ```
 
@@ -30,7 +30,7 @@ src/
 ## NILTO CMS連携
 
 - **スペース:** コーポレートデモサイト（ID: `744643889`）
-- **モデル:** `news`, `company`, `service`（service は後で完成予定）
+- **モデル:** `news`, `company`, `service`, `service_page`
 - **API クライアント:** `src/lib/nilto.js`
 
 ### データ取得関数
@@ -40,6 +40,8 @@ src/
 | `fetchNews(options)` | ニュース一覧取得（limit, offset 指定可） |
 | `fetchCompany()` | 会社情報取得（1件） |
 | `fetchServices(options)` | サービス一覧取得 |
+| `fetchFeaturedServices()` | おすすめサービス取得（TOPページ用） |
+| `fetchServicePage()` | サービスページ情報取得（リード文） |
 | `fetchContents(params)` | 汎用コンテンツ取得 |
 | `fetchContentById(id, params)` | 単一コンテンツ取得 |
 
@@ -61,12 +63,13 @@ src/
 
 | コンポーネント | 役割 | 主な props |
 |---------------|------|-----------|
-| `Layout.astro` | 共通レイアウト（head, header, footer） | `title`, `description` |
+| `Layout.astro` | 共通レイアウト（head, header, footer） | `title`, `description`, `ogType` |
 | `Header.astro` | ヘッダー・ナビゲーション | — |
 | `Footer.astro` | フッター | — |
-| `SectionHeading.astro` | セクション見出し（日英表示） | `title`, `subtitle`, `align` |
-| `NewsCard.astro` | ニュースカード | `news`（コンテンツオブジェクト） |
-| `ServiceCard.astro` | サービスカード | `service`, `variant`（summary / detail） |
+| `Breadcrumb.astro` | パンくずリスト | `items`（`{ label, href? }[]`） |
+| `SectionHeading.astro` | セクション見出し（日英表示） | `ja`, `en`, `align` |
+| `NewsCard.astro` | ニュースカード | `content`（コンテンツオブジェクト） |
+| `ServiceCard.astro` | サービスカード | `content`, `variant`（summary / detail） |
 
 ## 開発コマンド
 

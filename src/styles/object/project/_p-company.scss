@@ -45,11 +45,10 @@
 // Top page summary
 .p-company-summary {
   background-color: $color-bg-light;
+  padding: sm_vw(24) sm_vw(20);
 
   @include smMin {
-    display: flex;
-    align-items: center;
-    gap: rem(48);
+    padding: rem(32) rem(40);
   }
 }
 
@@ -61,11 +60,21 @@
   display: flex;
   gap: rem(16);
   font-size: rem(14);
-  margin-bottom: rem(8);
+  padding: sm_vw(12) 0;
+  border-bottom: 1px solid $color-border-light;
 
   @include smMin {
     font-size: rem(15);
-    margin-bottom: rem(12);
+    padding: rem(16) 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
   }
 }
 
@@ -73,6 +82,7 @@
   font-weight: $fw-bold;
   color: $color-primary;
   min-width: rem(80);
+  flex-shrink: 0;
 
   @include smMin {
     min-width: rem(100);
@@ -85,8 +95,9 @@
 
 .p-company-summary__more {
   margin-top: sm_vw(24);
+  text-align: center;
 
   @include smMin {
-    margin-top: rem(28);
+    margin-top: rem(32);
   }
 }

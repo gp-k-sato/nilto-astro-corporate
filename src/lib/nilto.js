@@ -90,6 +90,47 @@ export async function fetchServices(options = {}) {
   });
 }
 
+/**
+ * おすすめサービス取得（TOPページ用）
+ * is_featuredフィールドが未設定の場合は全サービスから最大3件取得
+ */
+export async function fetchFeaturedServices() {
+  try {
+    const items = await fetchContents({
+      model: "service",
+      "is_featured[eq]": "true",
+      depth: 1,
+      "detail[format]": "html",
+    });
+    if (items && items.length > 0) return items;
+  } catch {
+    // is_featuredフィールドが存在しない場合のフォールバック
+  }
+  return fetchContents({
+    model: "service",
+    limit: 3,
+    depth: 1,
+    "detail[format]": "html",
+  });
+}
+
+/**
+ * サービスページ情報取得（リード文）
+ */
+export async function fetchServicePage() {
+  try {
+    const items = await fetchContents({
+      model: "service_page",
+      limit: 1,
+      depth: 0,
+    });
+    return items && items.length > 0 ? items[0] : null;
+  } catch {
+    // service_pageモデルが未作成の場合
+    return null;
+  }
+}
+
 // --------------------------------------------------------------------------
 // Utilities
 // --------------------------------------------------------------------------

@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import NewsCard from "../components/NewsCard.astro";
 import ServiceCard from "../components/ServiceCard.astro";
-import { fetchNews, fetchServices, fetchCompany } from "../lib/nilto.js";
+import { fetchNews, fetchFeaturedServices, fetchCompany } from "../lib/nilto.js";
 
 let news: any[] = [];
 let services: any[] = [];
@@ -12,7 +12,7 @@ let company: any = null;
 try {
   [news, services, company] = await Promise.all([
     fetchNews({ limit: 3 }),
-    fetchServices(),
+    fetchFeaturedServices(),
     fetchCompany(),
   ]);
 } catch (e) {
@@ -56,8 +56,11 @@ try {
       {services && services.length > 0 ? (
         <div class="p-service__list">
           {services.map((item: any) => (
-            <ServiceCard content={item} />
+            <ServiceCard content={item} variant="summary" />
           ))}
+        </div>
+        <div class="p-service__more">
+          <a href="/service/" class="c-btn c-btn--outline">一覧を見る<span class="c-btn__arrow"></span></a>
         </div>
       ) : (
         <p>サービス情報はまだありません。</p>

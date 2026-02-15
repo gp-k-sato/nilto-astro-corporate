@@ -4,6 +4,41 @@
 // Service
 // ==========================================================================
 
+// Service List Page - Lead
+.p-service-lead {
+  max-width: $content-width-narrow;
+  margin: sm_vw(24) auto 0;
+  text-align: center;
+
+  @include smMin {
+    margin-top: rem(32);
+  }
+}
+
+.p-service-lead__ttl {
+  font-size: rem(18);
+  font-weight: $fw-bold;
+  color: $color-primary;
+  margin-bottom: sm_vw(12);
+
+  @include smMin {
+    font-size: rem(22);
+    margin-bottom: rem(16);
+  }
+}
+
+.p-service-lead__txt {
+  font-size: rem(14);
+  color: $color-text-light;
+  line-height: 2;
+  white-space: pre-line;
+
+  @include smMin {
+    font-size: rem(15);
+  }
+}
+
+// Service List
 .p-service__list {
   display: grid;
   gap: sm_vw(24);
@@ -11,6 +46,15 @@
   @include smMin {
     grid-template-columns: repeat(3, 1fr);
     gap: rem(28);
+  }
+}
+
+.p-service__more {
+  margin-top: sm_vw(32);
+  text-align: center;
+
+  @include smMin {
+    margin-top: rem(40);
   }
 }
 
@@ -108,6 +152,67 @@
   }
 }
 
+// Service Card - Link
+.p-service-card__link {
+  margin-top: sm_vw(16);
+  padding-top: sm_vw(12);
+
+  @include smMin {
+    margin-top: rem(20);
+    padding-top: rem(16);
+  }
+}
+
+.p-service-card__link-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(6);
+  font-size: rem(13);
+  font-weight: $fw-medium;
+  color: $color-primary;
+  text-decoration: none;
+  transition: gap $transition-base;
+
+  @include smMin {
+    font-size: rem(14);
+  }
+
+  @include hover {
+    opacity: 1;
+    gap: rem(10);
+  }
+}
+
+.p-service-card__link-arrow {
+  display: inline-block;
+  width: rem(16);
+  height: rem(16);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: rem(12);
+    height: 1px;
+    background-color: $color-primary;
+    transform: translateY(-50%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: rem(2);
+    width: rem(6);
+    height: rem(6);
+    border-top: 1px solid $color-primary;
+    border-right: 1px solid $color-primary;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
 // Service Detail variant
 .p-service-card--detail {
   .p-service-card__txt {
@@ -126,5 +231,145 @@
   @include smMin {
     margin-top: rem(20);
     padding-top: rem(20);
+  }
+}
+
+// ==========================================================================
+// Service Detail Page
+// ==========================================================================
+
+.p-service-detail {
+  max-width: $content-width-narrow;
+  margin: 0 auto;
+}
+
+.p-service-detail__header {
+  margin-bottom: sm_vw(24);
+
+  @include smMin {
+    margin-bottom: rem(32);
+  }
+}
+
+.p-service-detail__ttl {
+  font-size: rem(24);
+  font-weight: $fw-bold;
+  color: $color-primary;
+  line-height: 1.4;
+  margin-bottom: rem(8);
+
+  @include smMin {
+    font-size: rem(32);
+    margin-bottom: rem(12);
+  }
+}
+
+.p-service-detail__catch {
+  font-size: rem(14);
+  color: $color-text-light;
+  font-weight: $fw-medium;
+
+  @include smMin {
+    font-size: rem(16);
+  }
+}
+
+.p-service-detail__thumb {
+  margin-bottom: sm_vw(24);
+  overflow: hidden;
+
+  @include smMin {
+    margin-bottom: rem(32);
+  }
+}
+
+.p-service-detail__thumb-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.p-service-detail__summary {
+  margin-bottom: sm_vw(24);
+
+  @include smMin {
+    margin-bottom: rem(32);
+  }
+}
+
+.p-service-detail__summary-txt {
+  font-size: rem(14);
+  color: $color-text-light;
+  line-height: 2;
+
+  @include smMin {
+    font-size: rem(15);
+  }
+}
+
+.p-service-detail__section {
+  margin-bottom: sm_vw(32);
+  padding-bottom: sm_vw(32);
+  border-bottom: 1px solid $color-border-light;
+
+  @include smMin {
+    margin-bottom: rem(40);
+    padding-bottom: rem(40);
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.p-service-detail__section-ttl {
+  font-size: rem(20);
+  font-weight: $fw-bold;
+  color: $color-primary;
+  margin-bottom: sm_vw(16);
+  padding-bottom: sm_vw(12);
+  border-bottom: 2px solid $color-primary;
+
+  @include smMin {
+    font-size: rem(24);
+    margin-bottom: rem(24);
+    padding-bottom: rem(12);
+  }
+}
+
+.p-service-detail__cta {
+  margin-top: sm_vw(40);
+  text-align: center;
+
+  @include smMin {
+    margin-top: rem(48);
+  }
+}
+
+.p-service-detail__back {
+  margin-top: sm_vw(24);
+  text-align: center;
+
+  @include smMin {
+    margin-top: rem(32);
+  }
+}
+
+.p-service-detail__back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(6);
+  font-size: rem(14);
+  color: $color-text-light;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &::before {
+    content: "←";
+  }
+
+  @include hover {
+    opacity: 1;
+    color: $color-primary;
   }
 }

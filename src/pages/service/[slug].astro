@@ -1,0 +1,95 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { fetchServices, getImageUrl, getImageAlt, getBodyHtml } from "../../lib/nilto.js";
+
+export async function getStaticPaths() {
+  const services = await fetchServices();
+  return services.map((content: any) => ({
+    params: { slug: content.slug || content._id },
+    props: { content },
+  }));
+}
+
+const { content } = Astro.props;
+const thumbnailUrl = getImageUrl(content.thumbnail);
+const thumbnailAlt = getImageAlt(content.thumbnail);
+const detailHtml = getBodyHtml(content.detail);
+const featuresHtml = getBodyHtml(content.features);
+const flowHtml = getBodyHtml(content.flow);
+
+const breadcrumbItems = [
+  { label: "TOP", href: "/" },
+  { label: "サービス", href: "/service/" },
+  { label: content.service_name },
+];
+---
+
+<Layout
+  title={`${content.service_name} | サービス | NILTO Demo`}
+  description={content.description || `${content.service_name}の詳細ページです。`}
+>
+  <section class="l-main__section">
+    <div class="l-main__section-inner">
+      <Breadcrumb items={breadcrumbItems} />
+
+      <div class="p-service-detail">
+        <div class="p-service-detail__header">
+          <h1 class="p-service-detail__ttl">{content.service_name}</h1>
+          {content.catchphrase && (
+            <p class="p-service-detail__catch">{content.catchphrase}</p>
+          )}
+        </div>
+
+        {thumbnailUrl && (
+          <div class="p-service-detail__thumb">
+            <img
+              src={thumbnailUrl}
+              alt={thumbnailAlt || content.service_name}
+              class="p-service-detail__thumb-img"
+              loading="lazy"
+            />
+          </div>
+        )}
+
+        {content.description && (
+          <div class="p-service-detail__summary">
+            <p class="p-service-detail__summary-txt">{content.description}</p>
+          </div>
+        )}
+
+        {detailHtml && (
+          <div class="p-service-detail__section">
+            <div class="p-content-body" set:html={detailHtml} />
+          </div>
+        )}
+
+        {featuresHtml && (
+          <div class="p-service-detail__section">
+            <h2 class="p-service-detail__section-ttl">特徴・強み</h2>
+            <div class="p-content-body" set:html={featuresHtml} />
+          </div>
+        )}
+
+        {flowHtml && (
+          <div class="p-service-detail__section">
+            <h2 class="p-service-detail__section-ttl">導入の流れ</h2>
+            <div class="p-content-body" set:html={flowHtml} />
+          </div>
+        )}
+
+        <div class="p-service-detail__cta">
+          <a href="/contact/" class="c-btn c-btn--primary">
+            お問い合わせ<span class="c-btn__arrow"></span>
+          </a>
+        </div>
+
+        <div class="p-service-detail__back">
+          <a href="/service/" class="p-service-detail__back-link">
+            サービス一覧に戻る
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

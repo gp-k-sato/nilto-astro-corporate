@@ -1,0 +1,55 @@
+@use "../../global" as *;
+
+// ==========================================================================
+// Breadcrumb
+// ==========================================================================
+
+.c-breadcrumb {
+  margin-bottom: sm_vw(24);
+
+  @include smMin {
+    margin-bottom: rem(32);
+  }
+}
+
+.c-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.c-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  font-size: rem(12);
+  color: $color-text-muted;
+
+  @include smMin {
+    font-size: rem(13);
+  }
+
+  &:not(:last-child)::after {
+    content: ">";
+    margin: 0 rem(8);
+    color: $color-text-muted;
+  }
+}
+
+.c-breadcrumb__link {
+  color: $color-text-light;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  @include hover {
+    opacity: 1;
+    color: $color-primary;
+  }
+}
+
+.c-breadcrumb__current {
+  color: $color-text-muted;
+}

@@ -5,11 +5,14 @@ const { content, variant = "summary" } = Astro.props;
 const iconUrl = getImageUrl(content.icon);
 const iconAlt = getImageAlt(content.icon);
 const detailHtml = variant === "detail" ? getBodyHtml(content.detail) : "";
+const serviceUrl = `/service/${content.slug || content._id}/`;
 
 const serviceIcons: Record<string, string> = {
   "1": "&#128187;",
   "2": "&#9881;",
   "3": "&#127912;",
+  "4": "&#128200;",
+  "5": "&#128161;",
 };
 const fallbackIcon = serviceIcons[content.sort_order] || "&#9733;";
 ---
@@ -27,5 +30,12 @@ const fallbackIcon = serviceIcons[content.sort_order] || "&#9733;";
   {content.description && <p class="p-service-card__txt">{content.description}</p>}
   {variant === "detail" && detailHtml && (
     <div class="p-service-card__detail p-content-body" set:html={detailHtml} />
+  )}
+  {(variant === "summary" || variant === "list") && (
+    <div class="p-service-card__link">
+      <a href={serviceUrl} class="p-service-card__link-anchor">
+        詳しく見る<span class="p-service-card__link-arrow"></span>
+      </a>
+    </div>
   )}
 </div>

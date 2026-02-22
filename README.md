@@ -40,6 +40,10 @@ NILTO_API_KEY=your_api_key_here
 | `service` | サービス情報 |
 | `service_page` | サービス一覧ページ情報（リード文など） |
 
+### 4. デプロイ
+
+Vercel へのデプロイ手順は [docs/vercel-setup.md](docs/vercel-setup.md) を参照してください。
+
 ## 開発コマンド
 
 プロジェクトルートから実行します。

@@ -28,3 +28,4 @@ pnpm-debug.log*
 
 # MCP config (contains API tokens)
 .mcp.json
+.vercel
